@@ -1,0 +1,14 @@
+{
+  "name": "dropzone",
+  "homepage": "https://github.com/enyo/dropzone",
+  "version": "5.9.2",
+  "_release": "5.9.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v5.9.2",
+    "commit": "3c88864f98836b57f0822deaa1a40b99d5ba1f2d"
+  },
+  "_source": "https://github.com/enyo/dropzone.git",
+  "_target": "^5.1.1",
+  "_originalSource": "dropzone"
+}
