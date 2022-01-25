@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Client;
+use App\Entities\NextOfKin;
 use App\Entities\User;
 use App\Http\Requests;
 use App\Jobs\AddClientJob;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientsController extends Controller
 {
@@ -60,14 +62,39 @@ class ClientsController extends Controller
      */
     public function store(Requests\AddClientFormRequest $request)
     {
+        DB::beginTransaction();
         try {
             $client = $this->dispatch(new AddClientJob($request));
+            $client->nextOfKin()->create([
+                'name' => $request->nextOfKin1Name,
+                'relationship' => $request->nextOfKin1Relationship,
+                'benefit' => $request->nextOfKin1Benefit,
+                'address' => $request->nextOfKin1Address,
+                'number' => 1
+            ]);
 
+            $client->nextOfKin()->create([
+                'name' => $request->nextOfKin2Name,
+                'relationship' => $request->nextOfKin2Relationship,
+                'benefit' => $request->nextOfKin2Benefit,
+                'address' => $request->nextOfKin2Address,
+                'number' => 2
+            ]);
+
+            $client->nextOfKin()->create([
+                'name' => $request->nextOfKin3Name,
+                'relationship' => $request->nextOfKin3Relationship,
+                'benefit' => $request->nextOfKin3Benefit,
+                'address' => $request->nextOfKin3Address,
+                'number' => 3
+            ]);
+            DB::commit();
             flash()->success('The Client has successfully been created');
 
             return redirect()->route('clients.show', ['client' => $client]);
 
         } catch (\Exception $e) {
+            DB::rollBack();
             logger()->error('Could not add client:', ['error' => $e->getMessage()]);
 
             flash()->error('The Client could not be created. Please try again');
@@ -104,9 +131,30 @@ class ClientsController extends Controller
      */
     public function update(Requests\AddClientFormRequest $request, Client $client)
     {
+        DB::beginTransaction();
         try {
             $this->dispatch(new AddClientJob($request, $client));
+            NextOfKin::find($request->nextOfKin2Id)->update([
+                'name' => $request->nextOfKin2Name,
+                'relationship' => $request->nextOfKin2Relationship,
+                'benefit' => $request->nextOfKin2Benefit,
+                'address' => $request->nextOfKin2Address,
+            ]);
+            NextOfKin::find($request->nextOfKin1Id)->update([
+                'name' => $request->nextOfKin1Name,
+                'relationship' => $request->nextOfKin1Relationship,
+                'benefit' => $request->nextOfKin1Benefit,
+                'address' => $request->nextOfKin1Address,
+            ]);
+            NextOfKin::find($request->nextOfKin3Id)->update([
+                'name' => $request->nextOfKin3Name,
+                'relationship' => $request->nextOfKin3Relationship,
+                'benefit' => $request->nextOfKin3Benefit,
+                'address' => $request->nextOfKin3Address,
+            ]);
+            DB::commit();
         } catch (\Exception $e) {
+            DB::rollBack();
             logger()->error('Updating client failed', ['error' => $e->getMessage()]);
 
             flash()->error('The client could not be updated');

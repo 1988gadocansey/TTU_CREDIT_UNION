@@ -31,6 +31,11 @@
                                 <i class="fa fa-balance-scale"></i> Loans ({{ $client->loans->count() }})
                             </a>
                         </li>
+                        <li>
+                            <a href="#nextOfKin" data-toggle="tab" class="m-l">
+                                <i class="fa fa-balance-scale"></i> Next Of Kin
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="tab-content m-t">
@@ -113,13 +118,72 @@
 
                             </div>
                         </div>
-
                         <div class="panel tab-pane" id="transactions">
                             @include('dashboard.clients._show_client_transactions')
                         </div>
-
                         <div class="panel tab-pane" id="loans">
                             @include('dashboard.clients._show_loans')
+                        </div>
+                        <div class="panel tab-pane" id="nextOfKin">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5>Next of Kin 1</h5>
+                                    <div>
+                                        <small class="text-primary">Name</small>
+                                        <div class="font-bold">{{ $client->nextOfKin1->name ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Relationship</small>
+                                        <div class="font-bold">{{ $client->nextOfKin1->relationship ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Benefit</small>
+                                        <div class="font-bold">{{ $client->nextOfKin1->benefit ?? 0 }}%</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Address</small>
+                                        <div class="font-bold">{{ $client->nextOfKin1->address ?? '-' }}%</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Next of Kin 2</h5>
+                                    <div>
+                                        <small class="text-primary">Name</small>
+                                        <div class="font-bold">{{ $client->nextOfKin2->name ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Relationship</small>
+                                        <div class="font-bold">{{ $client->nextOfKin2->relationship ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Benefit</small>
+                                        <div class="font-bold">{{ $client->nextOfKin2->benefit ?? '0' }}%</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Address</small>
+                                        <div class="font-bold">{{ $client->nextOfKin2->address ?? '-' }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Next of Kin 3</h5>
+                                    <div>
+                                        <small class="text-primary">Name</small>
+                                        <div class="font-bold">{{ $client->nextOfKin3->name ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Relationship</small>
+                                        <div class="font-bold">{{ $client->nextOfKin3->relationship ?? '-' }}</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Benefit</small>
+                                        <div class="font-bold">{{ $client->nextOfKin3->benefit ?? 0 }}%</div>
+                                    </div>
+                                    <div>
+                                        <small class="text-primary">Address</small>
+                                        <div class="font-bold">{{ $client->nextOfKin3->address ?? '-' }}</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

@@ -1,10 +1,3 @@
-<?php
-/**
- * Author: Francis Addai <me@faddai.com>
- * Date: 14/11/2016
- * Time: 1:51 PM
- */
-?>
 <div class="col-md-6">
     <div class="form-group {{ has_error('firstname') }}">
         <label for="firstname" class="col-md-3 control-label">First name</label>
@@ -84,7 +77,7 @@
     <div class='form-group {{ has_error('dob') }}'>
         <label for="dob" class="col-md-3 control-label">Date of Birth</label>
         <div class="col-md-9">
-            <input type='text' class="form-control" name="dob" role="datepicker" data-date-format="yyyy-mm-dd"
+            <input type='date' class="form-control" name="dob" role="datepicker" data-date-format="yyyy-mm-dd"
                    value="{{ old('dob', $client->clientable ? $client->clientable->dob->format('Y-m-d') : '') }}"
                    placeholder="yyyy-mm-dd"/>
         </div>
@@ -195,24 +188,124 @@
     </div>
 
 </div>
+<div class="col-md-12">
+    <div class="form-group row">
+        <div class="col-md-4">
+            <h4>Next of Kin 1</h4>
+            <input type="hidden" name="nextOfKin1Id" value="{{$client->nextOfKin1->id ?? ''}}">
+            <div class="form-group {{ has_error('nextOfKin1Name') }}">
+                <label for="nextOfKin1Name" class="col-md-3 control-label">Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin1Name" name="nextOfKin1Name"
+                           value="{{ old('nextOfKin1Name', $client->nextOfKin1->name ?? '') }}" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin1Relationship') }}">
+                <label for="nextOfKin1Relationship" class="col-md-3 control-label">Relationship</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin1Relationship" name="nextOfKin1Relationship"
+                           value="{{ old('nextOfKin1Relationship', $client->nextOfKin1->relationship ?? '') }}" placeholder="Relationship">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin1Benefit') }}">
+                <label for="nextOfKin1Benefit" class="col-md-3 control-label">Share of Benefit(%)</label>
+                <div class="col-md-9">
+                    <input type="number" min="0" class="form-control" id="nextOfKin1Benefit" name="nextOfKin1Benefit"
+                           value="{{ old('nextOfKin1Benefit', $client->nextOfKin1->benefit ?? 0) }}" placeholder="Share of Benefit in Percentage">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin1Address') }}">
+                <label for="nextOfKin1Address" class="col-md-3 control-label">Address</label>
+                <div class="col-md-9">
+            <textarea name="nextOfKin1Address" id="nextOfKin1Address" rows="2" class="form-control"
+                      placeholder="Residential address">{{ old('nextOfKin1Address', $client->nextOfKin1->address ?? '') }}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Next of Kin 2</h4>
+            <input type="hidden" name="nextOfKin2Id" value="{{$client->nextOfKin2->id ?? ''}}">
+            <div class="form-group {{ has_error('nextOfKin2Name') }}">
+                <label for="nextOfKin2Name" class="col-md-3 control-label">Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin2Name" name="nextOfKin2Name"
+                           value="{{ old('nextOfKin2Name', $client->nextOfKin2->name ?? '') }}" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin2Relationship') }}">
+                <label for="nextOfKin2Relationship" class="col-md-3 control-label">Relationship</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin2Relationship" name="nextOfKin2Relationship"
+                           value="{{ old('nextOfKin2Relationship', $client->nextOfKin2->relationship ?? '') }}" placeholder="Relationship">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin2Benefit') }}">
+                <label for="nextOfKin2Benefit" class="col-md-3 control-label">Share of Benefit(%)</label>
+                <div class="col-md-9">
+                    <input type="number" min="0" class="form-control" id="nextOfKin2Benefit" name="nextOfKin2Benefit"
+                           value="{{ old('nextOfKin2Benefit', $client->nextOfKin2->benefit ?? 0) }}" placeholder="Share of Benefit in Percentage">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin2Address') }}">
+                <label for="nextOfKin2Address" class="col-md-3 control-label">Address</label>
+                <div class="col-md-9">
+            <textarea name="nextOfKin2Address" id="nextOfKin2Address" rows="2" class="form-control"
+                      placeholder="Residential address">{{ old('nextOfKin2Address', $client->nextOfKin2->address ?? '') }}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Next of Kin 3</h4>
+            <input type="hidden" name="nextOfKin3Id" value="{{$client->nextOfKin3->id  ?? ''}}">
+            <div class="form-group {{ has_error('nextOfKin3Name') }}">
+                <label for="nextOfKin3Name" class="col-md-3 control-label">Name</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin3Name" name="nextOfKin3Name"
+                           value="{{ old('nextOfKin3Name', $client->nextOfKin3->name  ?? '') }}" placeholder="Enter Name">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin3Relationship') }}">
+                <label for="nextOfKin3Relationship" class="col-md-3 control-label">Relationship</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" id="nextOfKin3Relationship" name="nextOfKin3Relationship"
+                           value="{{ old('nextOfKin3Relationship', $client->nextOfKin3->relationship ?? '') }}" placeholder="Relationship">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin3Benefit') }}">
+                <label for="nextOfKin3Benefit" class="col-md-3 control-label">Share of Benefit(%)</label>
+                <div class="col-md-9">
+                    <input type="number" min="0" class="form-control" id="nextOfKin3Benefit" name="nextOfKin3Benefit"
+                           value="{{ old('nextOfKin3Benefit', $client->nextOfKin3->benefit ?? 0) }}" placeholder="Share of Benefit in Percentage">
+                </div>
+            </div>
+            <div class="form-group {{ has_error('nextOfKin3Address') }}">
+                <label for="nextOfKin3Address" class="col-md-3 control-label">Address</label>
+                <div class="col-md-9">
+            <textarea name="nextOfKin3Address" id="nextOfKin3Address" rows="2" class="form-control"
+                      placeholder="Residential address">{{ old('nextOfKin3Address', $client->nextOfKin3->address ?? '') }}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @push('more_scripts')
-<script>
-    var $inputSpouseName = $('input[name="spouse_name"]'),
-        $maritalStatus = $('select[name="marital_status"]');
+    <script>
+        var $inputSpouseName = $('input[name="spouse_name"]'),
+            $maritalStatus = $('select[name="marital_status"]');
 
-    if ($maritalStatus.val() === 'married') {
-        $inputSpouseName.parents('.form-group').removeClass('hide');
-    }
-
-    $maritalStatus.change(function (e) {
-        var selected = $(this).val();
-
-        if (selected === 'married') {
+        if ($maritalStatus.val() === 'married') {
             $inputSpouseName.parents('.form-group').removeClass('hide');
-        } else {
-            $inputSpouseName.parents('.form-group').addClass('hide');
         }
-    })
-</script>
+
+        $maritalStatus.change(function (e) {
+            var selected = $(this).val();
+
+            if (selected === 'married') {
+                $inputSpouseName.parents('.form-group').removeClass('hide');
+            } else {
+                $inputSpouseName.parents('.form-group').addClass('hide');
+            }
+        })
+    </script>
 @endpush
