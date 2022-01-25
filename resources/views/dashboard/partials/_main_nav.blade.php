@@ -20,12 +20,12 @@
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
 
-                <a href="/dashboard"><img src='{{asset("img/logo.png")}}' style="height: auto; width: 48px"/></a> {{ config('app.name') }}
+                <a href="/dashboard"><img src='{{asset("img/logo.png")}}' alt="TTU" height="auto" width="100"/></a>
             </a>
         </div>
 
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+        <div class="collapse navbar-collapse pt-5" id="app-navbar-collapse">
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> Home</a></li>

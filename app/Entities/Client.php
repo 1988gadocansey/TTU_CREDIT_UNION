@@ -17,6 +17,11 @@ class Client extends Model
         'name', 'photo', 'signature', 'account_balance'
     ];
 
+    protected $appends = [
+        'nextOfKin1',
+        'nextOfKin2',
+        'nextOfKin3'
+    ];
     /**
      * The user who created/opened the account for this client
      *
@@ -27,6 +32,16 @@ class Client extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    public function getNextOfKin1Attribute(){
+        return NextOfKin::where('client_id', $this->id)->where('number', 1)->first();
+    }
+
+    public function getNextOfKin2Attribute(){
+        return NextOfKin::where('client_id', $this->id)->where('number', 2)->first();
+    }
+    public function getNextOfKin3Attribute(){
+        return NextOfKin::where('client_id', $this->id)->where('number', 3)->first();
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -189,5 +204,9 @@ class Client extends Model
     public function canReceiveSmsNotification()
     {
         return ! $this->phone1 !== null || ! $this->phone2 !== null;
+    }
+
+    public function nextOfKin(){
+        return $this->hasMany(NextOfKin::class, 'client_id');
     }
 }

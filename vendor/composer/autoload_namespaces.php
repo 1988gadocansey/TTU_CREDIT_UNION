@@ -11,6 +11,7 @@ return array(
     'Sabberworm\\CSS' => array($vendorDir . '/sabberworm/php-css-parser/lib'),
     'Raven_' => array($vendorDir . '/sentry/sentry/lib'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
+    'PHPMD\\' => array($vendorDir . '/phpmd/phpmd/src/main/php'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
